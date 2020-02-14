@@ -139,14 +139,15 @@ mapview::mapview(precincts,
                     ))
 ```
 
-## Who kills Who
-What are the demographics of perpetrators and victims.  Incidents where demographic information is unknown are removed.  This takes out about 40% of all the incidents.
+## Who kills Whom
+What are the demographics of perpetrators and victims?  Incidents where demographic information is unknown are removed.  This takes out about 40% of all the incidents so they are not included in the plots below.
 
 ```{r}
-shooting %>% ggplot(aes(perp_age_group,fill=perp_age_group)) + geom_bar()+
-      labs(title = "The Identity of many Perps is Unknown at the time of the Incident",
+shooting %>% ggplot(aes(is_murder,fill=perp_age_group)) + geom_bar(position = "stack") +
+      labs(title = "The Identity of Many Shooters is Unknown\nat the Time of the Incident",
         subtitle = "NYC Shootings 2003 to 2019-09",
-        caption = "source:NYPD Compstat")
+        caption = "source:NYPD Compstat",
+        x = "")
 ```
 
 
